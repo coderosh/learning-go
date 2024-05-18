@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"
+    />
+    <style>
+      .list-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form action="/todos" method="post">
+        <label for="todo">Enter Todo</label>
+        <input name="todo" autofocus id="todo" />
+      </form>
+
+      <ol>
+        {{range .Todos}}
+        <li class="list-item">
+          <span> {{ .Value }} </span>
+          <form method="post" action="/todos/{{ .Key }}">
+            <button>✕</button>
+          </form>
+        </li>
+        {{end}}
+      </ol>
+    </div>
+  </body>
+</html>
