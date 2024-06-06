@@ -1,0 +1,21 @@
+package components
+
+templ Nav(userId string) {
+	<nav class="w-full h-16 sticky top-0 py-2 border-b bg-white">
+		<div class="flex px-4 justify-between  items-center">
+			<a class="text-lg font-bold text-violet-500" href="/">GSHORT</a>
+			<div></div>
+			<div class="flex gap-3">
+				if userId != "" {
+					<a class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium tracking-wide text-white transition-colors duration-200 rounded-md bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none" href="/dashboard">Dashboard</a>
+					<form action="/logout" method="post">
+						<button type="submit" class="nline-flex items-center justify-center px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-100 bg-white border-2 rounded-md text-neutral-900 hover:text-white border-neutral-900 hover:bg-neutral-900">Logout</button>
+					</form>
+				} else {
+					<a class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium tracking-wide text-white transition-colors duration-200 rounded-md bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none" href="/login">Login</a>
+					<a class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-100 bg-white border-2 rounded-md text-neutral-900 hover:text-white border-neutral-900 hover:bg-neutral-900" href="/signup">Signup</a>
+				}
+			</div>
+		</div>
+	</nav>
+}

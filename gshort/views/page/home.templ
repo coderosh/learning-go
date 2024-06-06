@@ -1,0 +1,29 @@
+package page
+
+import "gshort/views/layouts"
+
+templ Home(data map[string]string) {
+	@layouts.Base("Home", data["userId"]) {
+		<div class="p-4 h-full">
+			@layouts.Page() {
+				<div
+					x-data="{
+							visible: false,
+							visibleAfter: 300,
+						}"
+					x-show="visible"
+					x-init="
+							setTimeout(()=>{ visible = true }, visibleAfter);
+						"
+					x-transition:enter="opacity ease-in duration-500"
+					x-transition:enter-start="opacity-0"
+					x-transition:enter-end="opacity-100"
+					class="my-10 group"
+				>
+					<h1 class="text-5xl text-center font-medium my-5 group-hover:tracking-widest  transition-all duration-300">GSHORT</h1>
+					<p class="text-center text-lg group-hover:tracking-widest duration-150">URL shortner in golang</p>
+				</div>
+			}
+		</div>
+	}
+}

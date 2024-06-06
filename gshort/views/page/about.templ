@@ -1,0 +1,9 @@
+package page
+
+import "gshort/views/layouts"
+
+templ About(data map[string]string) {
+	@layouts.Base("About", data["userId"]) {
+		<h1>Hello, This is about page</h1>
+	}
+}

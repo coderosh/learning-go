@@ -1,0 +1,21 @@
+package components
+
+templ ErrorBanner(err string) {
+	if err != "" {
+		<div
+			x-data="{
+				bannerVisible: true,
+    		}"
+			x-show="bannerVisible"
+			x-transition:leave="opacity ease-in duration-500"
+			x-transition:leave-start="opacity-100"
+			x-transition:leave-end="opacity-0"
+			class="bg-red-50 text-red-500 py-1 px-3 my-2 rounded-md border border-red-500 flex justify-between"
+		>
+			{ err }
+			<button @click="bannerVisible=false;" class="flex items-center flex-shrink-0 translate-x-1 ease-out duration-150 justify-center w-6 h-6 p-1.5 text-red-400 hover:text-red-600 rounded-full hover:bg-neutral-100">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-full h-full"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+			</button>
+		</div>
+	}
+}

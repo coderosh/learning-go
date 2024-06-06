@@ -1,0 +1,24 @@
+package auth
+
+import "gshort/views/layouts"
+import "gshort/views/components"
+
+templ Signup(data map[string]string) {
+	@layouts.Base("Signup", data["userId"]) {
+		<div class="w-full h-full min-h-[inherit] flex items-center justify-center">
+			<div class="w-[90%] max-w-md bg-white rounded-lg border border-slate-300 p-7">
+				<div class="text-xl mb-7 text-center">Signup</div>
+				@components.ErrorBanner(data["error"])
+				<form action="/signup" method="post" class="space-y-4">
+					@components.Input("email", "Email", "email", data["email"])
+					@components.Input("password", "Password", "password", data["password"])
+					<div class="flex justify-end">
+						<button type="submit" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium tracking-wide text-white transition-colors duration-200 rounded-md bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none">
+							Signup
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	}
+}

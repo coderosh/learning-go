@@ -1,0 +1,9 @@
+package dashboard
+
+import "gshort/views/layouts"
+
+templ Analytics(data map[string]string) {
+	@layouts.Dashboard("Dashboard", data["userId"], data["path"]) {
+		<div>Analytics page</div>
+	}
+}

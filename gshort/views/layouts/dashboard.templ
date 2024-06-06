@@ -1,0 +1,32 @@
+package layouts
+
+templ Dashboard(title string, userId string, curPath string) {
+	@Base(title, userId) {
+		<div class="flex gap-2 h-full">
+			<div class="m-4 p-4 py-4 rounded-lg bg-white w-[250px] space-y-1">
+				@sidebarLink("/dashboard", "Links", curPath == "/dashboard/")
+				@sidebarLink("/dashboard/analytics", "Analytics", curPath == "/dashboard/analytics/")
+			</div>
+			<div class="flex-1 py-4 pr-4">
+				@Page() {
+					<div class="h-full overflow-y-auto">
+						{ children... }
+					</div>
+				}
+			</div>
+		</div>
+	}
+}
+
+templ sidebarLink(href templ.SafeURL, name string, isCurrent bool) {
+	<a class={ getSidebarLinkClass(isCurrent) } href={ href }>{ name }</a>
+}
+
+func getSidebarLinkClass(isCurrent bool) string {
+	class := "block px-3 py-1 hover:bg-violet-50 rounded-md hover:text-violet-500 border border-transparent hover:border-violet-500"
+	if isCurrent {
+		class += " text-violet-500 border-violet-500 bg-violet-50 font-bold "
+	}
+
+	return class
+}
